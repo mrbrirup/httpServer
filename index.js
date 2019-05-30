@@ -5,7 +5,7 @@ var path = require('path');
 function onRequest (req, response) {
     console.log('request starting...');
 
-    var filePath = 'C:\\Development\\SECDesignerPixi\\' + req.url;
+    var filePath = process.argv[3] + req.url;
     console.log(filePath);
     //if (filePath == './')        filePath = './index.html';
 
