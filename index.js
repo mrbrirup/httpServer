@@ -6,8 +6,8 @@ function onRequest (req, resp) {
 }
  
 const server = http2.createSecureServer({
-  key: fs.readFileSync('localhost-privkey.pem'),
-  cert: fs.readFileSync('localhost-cert.pem')
+  key: fs.readFileSync('./localhost-privkey.pem'),
+  cert: fs.readFileSync('./localhost-cert.pem')
 }, onRequest);
  
 server.listen(8443);
