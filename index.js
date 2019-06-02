@@ -2,11 +2,13 @@ const http2 = require('http2');
 const fs = require('fs');
 var path = require('path');
 
+console.log(process.argv)
+var rootFilePath = process.argv[2]
 function onRequest(req, response) {
   console.log('request starting...');
-
-  var filePath = process.env.argv[3] + req.url;
+  var filePath = rootFilePath + req.url;
   console.log(filePath);
+
   //if (filePath == './')        filePath = './index.html';
 
   var extname = path.extname(filePath);
@@ -52,10 +54,10 @@ function onRequest(req, response) {
     }
   });
 }
-   
 const server = http2.createSecureServer({
-  key: fs.readFileSync('./localhost-privkey.pem'),
-  cert: fs.readFileSync('./localhost-cert.pem')
+  
+  key: fs.readFileSync(__dirname + '/localhost-privkey.pem'),
+  cert: fs.readFileSync(__dirname + '/localhost-cert.pem')
 }, onRequest);
  
 server.listen(8443)
