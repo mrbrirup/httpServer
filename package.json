@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/mrbrirup/httpServer/issues"
   },
-  "homepage": "https://github.com/mrbrirup/httpServer#readme"
+  "homepage": "https://github.com/mrbrirup/httpServer#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fs-extra": "^8.0.1",
+    "node": "^10.16.0"
+  }
 }
