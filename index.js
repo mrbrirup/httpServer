@@ -1,5 +1,6 @@
 var fs = require('fs-extra');
 var https = require('https');
+var http = require('http');
 var http2 = require('http2')
 var express = require('express');
 var app = express();
@@ -12,11 +13,12 @@ if (configFile.folders) {
 staticFolders.forEach(folder => {
   app.use(express.static(folder.static))
 })
-const httpsServer = https.createServer({
-  key: fs.readFileSync(__dirname + '/localhost-privkey.pem'),
-  cert: fs.readFileSync(__dirname + '/localhost-cert.pem')
-}, app);
-httpsServer.listen(8443);
+// const httpsServer = http2.createServer({
+//   //key: fs.readFileSync(__dirname + '/localhost-privkey.pem'),
+//   //cert: fs.readFileSync(__dirname + '/localhost-cert.pem')
+// }, app);
+const httpsServer = http.createServer(app);
+httpsServer.listen(8080);
 
 
 
